@@ -38,4 +38,9 @@ ls ./edge/main | while read arch; do
 done
 
 rm ./edge/main/*/*.apk
+
+git add _redirects
+git commit -m "add $APP $VERSION"
+git push
+
 npx wrangler pages deploy --project-name apk .
