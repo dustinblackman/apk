@@ -32,8 +32,8 @@ done
 ls ./edge/main | while read arch; do
 	(
 		cd "./edge/main/$arch"
-		docker run --rm -t -e "SIGN_KEY=$(cat ~/.gpg/alpine-linux-apk.key | base64)" -v "$PWD:/project" -w /project apk-deploy:local bash -c \
-			'apk index -vU -o APKINDEX.tar.gz *.apk && echo $SIGN_KEY | base64 -d >/tmp/key && abuild-sign -k /tmp/key APKINDEX.tar.gz'
+		docker run --rm -t -e "SIGN_KEY=$(cat ~/.gpg/apk@apk.dustinblackman.com-658c5a5b.rsa | base64)" -v "$PWD:/project" -w /project apk-deploy:local bash -c \
+			'apk index -vU -o APKINDEX.tar.gz *.apk && echo $SIGN_KEY | base64 -d >/tmp/apk@apk.dustinblackman.com-658c5a5b.rsa && abuild-sign -k /tmp/apk@apk.dustinblackman.com-658c5a5b.rsa APKINDEX.tar.gz'
 	)
 done
 
