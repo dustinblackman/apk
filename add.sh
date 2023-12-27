@@ -22,10 +22,10 @@ done
 ls "$DISTFOLDER" | grep '.apk' | while read file; do
 	if (echo "$file" | grep -q "arm64"); then
 		cp "$DISTFOLDER/$file" edge/main/aarch64/
-		echo "edge/main/aarch64/${file} https://github.com/dustinblackman/${APP}/releases/download/v${VERSION}/${file} 302" >>_redirects
+		echo "/edge/main/aarch64/${file} https://github.com/dustinblackman/${APP}/releases/download/v${VERSION}/${file} 302" >>_redirects
 	else
 		cp "$DISTFOLDER/$file" edge/main/x86_64/
-		echo "edge/main/x86_64/${file} https://github.com/dustinblackman/${APP}/releases/download/v${VERSION}/${file} 302" >>_redirects
+		echo "/edge/main/x86_64/${file} https://github.com/dustinblackman/${APP}/releases/download/v${VERSION}/${file} 302" >>_redirects
 	fi
 done
 
